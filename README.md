@@ -21,3 +21,6 @@ Modify the apiUrl variable in the JavaScript code to point to your Laravel API e
 Obtain a bearer token and store it in localStorage with the key token.
 View the fish species information displayed on the webpage.
 Feel free to contribute to the project by submitting bug fixes, enhancements, or new features through pull requests.
+
+# Note
+The backend (Laravel app) will be published soon too.
