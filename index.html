@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FishWiki</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <div class="wiki-container">
+        <div class="wiki-details" id="wikiDetails">
+            <h1 id="wikiTitle"></h1>
+            <p id="wikiDescription"></p>
+        </div>
+        <div class="wiki-image-container">
+            <img src="" alt="Wiki Image" class="wiki-image" id="wikiImage">
+        </div>
+    </div>
+
+    <script>
+        // Replace 'YOUR_API_ENDPOINT_URL' with the actual API endpoint URL
+        const apiUrl = 'https://127.0.0.1:8000/api/wikis';
+
+        // Retrieve token from localStorage
+        const bearerToken = localStorage.getItem('token');
+
+        // Axios request to fetch wiki data
+        axios.get(apiUrl, {
+            headers: {
+                Authorization: `Bearer ${bearerToken}`
+            }
+        })
+        .then(response => {
+            const wikiTitle = document.getElementById('wikiTitle');
+            const wikiDescription = document.getElementById('wikiDescription');
+            const wikiImage = document.getElementById('wikiImage');
+
+            // Populate title, description, and image
+            const data = response.data;
+            wikiTitle.textContent = data.title;
+            wikiDescription.textContent = data.description;
+            wikiImage.src = data.image;
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+        });
+    </script>
+</body>
+</html>
