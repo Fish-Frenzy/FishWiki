@@ -1,0 +1,104 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f8ff; 
+    color: #333;
+    padding: 0;
+}
+
+.wiki-container {
+    display: block;
+    margin-bottom: 20px; 
+    width: 600px;
+    margin: 20px 20px 20px 20px;
+}
+
+.wiki-details {
+    margin-right: 20px;
+    width: 500px;
+}
+
+.wiki-image-container {
+    border: 2px solid #4682b4;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #fff; 
+}
+
+.wiki-image {
+    max-width: 300px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #4682b4;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #87ceeb; 
+}
+
+td {
+    background-color: #f0f8ff; 
+    width: 200px !important;
+}
+
+.flag-img {
+    max-width: 30px;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.navbar {
+    background-color: #4682b4; 
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 97%;
+}
+
+.navbar h1 {
+    margin: 0;
+    color: #fff;
+}
+
+.navbar button {
+    padding: 10px 20px;
+    background-color: #87ceeb;
+    border: none;
+    border-radius: 5px;
+    color: #fff; 
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.navbar button:hover {
+    background-color: #4682b4; 
+}
+
+#regionFilter {
+    padding: 5px 5px;
+    border: none;
+}
+
+#loginDiv {
+    text-align: center;
+    margin-top: 200px;
+}
+
+#loginDiv input, label{
+    margin: 20px 20px;
+    border: none;
+    padding: 10px 10px;
+}

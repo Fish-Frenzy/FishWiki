@@ -4,45 +4,108 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FishWiki</title>
+    <link rel="stylesheet" href="style/style.css">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
-    <div class="wiki-container">
-        <div class="wiki-details" id="wikiDetails">
-            <h1 id="wikiTitle"></h1>
-            <p id="wikiDescription"></p>
+    <header>
+        <div class="navbar">
+            <h1>FishWiki</h1>
+            <select id="regionFilter">
+                <option value="all">All Regions</option>
+                <option value="North America">North America</option>
+                <option value="Europe">Europe</option>
+            </select>
+            <a href="login.html"><button>Login</button></a>
         </div>
-        <div class="wiki-image-container">
-            <img src="" alt="Wiki Image" class="wiki-image" id="wikiImage">
-        </div>
-    </div>
+    </header>
+
+    <br> <br> <br>
+    
+    <div id="wikiContainer"></div>
 
     <script>
-        // Replace 'YOUR_API_ENDPOINT_URL' with the actual API endpoint URL
-        const apiUrl = 'https://127.0.0.1:8000/api/wikis';
+        document.addEventListener("DOMContentLoaded", function() {
+            const apiUrl = 'http://127.0.0.1:8000/api/wikis';
+            const wikiContainer = document.getElementById('wikiContainer');
+            const regionFilter = document.getElementById('regionFilter');
 
-        // Retrieve token from localStorage
-        const bearerToken = localStorage.getItem('token');
+            function fetchWikis() {
+                axios.get(apiUrl, {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then(response => {
+                    wikiContainer.innerHTML = '';
 
-        // Axios request to fetch wiki data
-        axios.get(apiUrl, {
-            headers: {
-                Authorization: `Bearer ${bearerToken}`
+                    if (response.data && response.data.length > 0) {
+                        response.data.forEach(wiki => {
+                            if (regionFilter.value === 'all' || wiki.region === regionFilter.value) {
+                                const wikiWrapper = document.createElement('div');
+                                wikiWrapper.classList.add('wiki-container');
+
+                                const wikiDetails = document.createElement('div');
+                                wikiDetails.classList.add('wiki-details');
+                                wikiDetails.innerHTML = `
+                                    <h1>${wiki.title}</h1>
+                                    <p>${wiki.description}</p>
+                                `;
+
+                                const wikiImageContainer = document.createElement('div');
+                                wikiImageContainer.classList.add('wiki-image-container');
+
+                                const wikiImage = document.createElement('img');
+                                wikiImage.classList.add('wiki-image');
+                                wikiImage.src = wiki.image;
+                                wikiImage.alt = 'Wiki Image';
+
+                                const wikiTable = document.createElement('table');
+                                wikiTable.innerHTML = `
+                                    <tr>
+                                        <th>Attribute</th>
+                                        <th>Value</th>
+                                    </tr>
+                                    <tr>
+                                        <td>Region:</td>
+                                        <td>${wiki.region} <img class="flag-img" src="${getFlagSrc(wiki.region)}" alt="${wiki.region} Flag"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Rarity:</td>
+                                        <td>${wiki.rarity}</td>
+                                    </tr>
+                                `;
+
+                                wikiImageContainer.appendChild(wikiImage);
+                                wikiImageContainer.appendChild(wikiTable);
+
+                                wikiWrapper.appendChild(wikiDetails);
+                                wikiWrapper.appendChild(wikiImageContainer);
+
+                                wikiContainer.appendChild(wikiWrapper);
+                            }
+                        });
+                    } else {
+                        console.error('No data received or empty data array.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching data:', error);
+                });
             }
-        })
-        .then(response => {
-            const wikiTitle = document.getElementById('wikiTitle');
-            const wikiDescription = document.getElementById('wikiDescription');
-            const wikiImage = document.getElementById('wikiImage');
 
-            // Populate title, description, and image
-            const data = response.data;
-            wikiTitle.textContent = data.title;
-            wikiDescription.textContent = data.description;
-            wikiImage.src = data.image;
-        })
-        .catch(error => {
-            console.error('Error fetching data:', error);
+            fetchWikis();
+
+            regionFilter.addEventListener('change', fetchWikis);
+
+            function getFlagSrc(region) {
+                if (region === 'North America') {
+                    return 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_the_United_States.svg/1280px-Flag_of_the_United_States.svg.png';
+                } else if (region === 'Europe') {
+                    return 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Flag_of_Europe.svg/2560px-Flag_of_Europe.svg.png';
+                }
+                return '';
+            }
         });
     </script>
 </body>
