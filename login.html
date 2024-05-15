@@ -5,7 +5,7 @@
     <title>FishWiki - Login</title>
     <link rel="stylesheet" href="style/login.css">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="scripts/login.js"></script>
+    <script src="scripts/logintheme.js"></script>
 </header>
 
 <div id="form">
@@ -27,41 +27,7 @@
 
     <input type="submit" value="Login" /> <br>
    <a href="index.html"> Back to home </a>
+   <div id="error"></div>
 </form>
-<script>
-  ddocument.addEventListener("DOMContentLoaded", function() {
-    const apiUrl = 'http://127.0.0.1:8000/api';
-    const loginForm = document.getElementById('waterform');
-
-    function login(email, password) {
-        return axios.post(`${apiUrl}/login`, { email: email, password: password }, {
-            headers: {
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*' 
-            }
-        });
-    }
-
-    loginForm.addEventListener('submit', function (event) {
-        event.preventDefault();
-
-        const email = document.getElementById('email').value;
-        const password = document.getElementById('password').value;
-
-        login(email, password)
-        .then(response => {
-            console.log('Login successful');
-            localStorage.setItem('accessToken', response.data.token);
-            window.location.href = 'dashboard.html';
-        })
-        .catch(error => {
-            console.error('Login failed:', error);
-            alert('Login failed. Please check your email and password.');
-        });
-    });
-});
-
-
-
-</script>
+<script src="scripts/login.js"></script>
 </div>

@@ -6,107 +6,70 @@
     <title>FishWiki</title>
     <link rel="stylesheet" href="style/style.css">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://kit.fontawesome.com/80bfb3b6e2.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <header>
         <div class="navbar">
             <h1>FishWiki</h1>
-            <select id="regionFilter">
-                <option value="all">All Regions</option>
-                <option value="North America">North America</option>
-                <option value="Europe">Europe</option>
-            </select>
             <a href="login.html"><button>Login</button></a>
         </div>
     </header>
 
-    <br> <br> <br>
+    <br> <br> <br> <br>
+
+    <select id="regionFilter">
+        <option value="all">All Regions</option>
+        <option value="North America">North America</option>
+        <option value="Europe">Europe</option>
+        <option value="Asia">Asia</option>
+        <option value="Latin America">Latin America</option>
+    </select>
     
     <div id="wikiContainer"></div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const apiUrl = 'http://127.0.0.1:8000/api/wikis';
-            const wikiContainer = document.getElementById('wikiContainer');
-            const regionFilter = document.getElementById('regionFilter');
-
-            function fetchWikis() {
-                axios.get(apiUrl, {
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                })
-                .then(response => {
-                    wikiContainer.innerHTML = '';
-
-                    if (response.data && response.data.length > 0) {
-                        response.data.forEach(wiki => {
-                            if (regionFilter.value === 'all' || wiki.region === regionFilter.value) {
-                                const wikiWrapper = document.createElement('div');
-                                wikiWrapper.classList.add('wiki-container');
-
-                                const wikiDetails = document.createElement('div');
-                                wikiDetails.classList.add('wiki-details');
-                                wikiDetails.innerHTML = `
-                                    <h1>${wiki.title}</h1>
-                                    <p>${wiki.description}</p>
-                                `;
-
-                                const wikiImageContainer = document.createElement('div');
-                                wikiImageContainer.classList.add('wiki-image-container');
-
-                                const wikiImage = document.createElement('img');
-                                wikiImage.classList.add('wiki-image');
-                                wikiImage.src = wiki.image;
-                                wikiImage.alt = 'Wiki Image';
-
-                                const wikiTable = document.createElement('table');
-                                wikiTable.innerHTML = `
-                                    <tr>
-                                        <th>Attribute</th>
-                                        <th>Value</th>
-                                    </tr>
-                                    <tr>
-                                        <td>Region:</td>
-                                        <td>${wiki.region} <img class="flag-img" src="${getFlagSrc(wiki.region)}" alt="${wiki.region} Flag"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Rarity:</td>
-                                        <td>${wiki.rarity}</td>
-                                    </tr>
-                                `;
-
-                                wikiImageContainer.appendChild(wikiImage);
-                                wikiImageContainer.appendChild(wikiTable);
-
-                                wikiWrapper.appendChild(wikiDetails);
-                                wikiWrapper.appendChild(wikiImageContainer);
-
-                                wikiContainer.appendChild(wikiWrapper);
-                            }
-                        });
-                    } else {
-                        console.error('No data received or empty data array.');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error fetching data:', error);
-                });
-            }
-
-            fetchWikis();
-
-            regionFilter.addEventListener('change', fetchWikis);
-
-            function getFlagSrc(region) {
-                if (region === 'North America') {
-                    return 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_the_United_States.svg/1280px-Flag_of_the_United_States.svg.png';
-                } else if (region === 'Europe') {
-                    return 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Flag_of_Europe.svg/2560px-Flag_of_Europe.svg.png';
-                }
-                return '';
-            }
-        });
-    </script>
+    <div class="footerWrapper">
+        <footer class="footer">
+          <div class="footerContainer">
+            <div class="row">
+              <div class="footer-col">
+                <h4>Pages</h4>
+                <ul>
+                  <li><a href="#">Home</a></li>
+                  <li><a href="login.html">Login</a></li>
+                  <li><a href="dashboard.html">Dashboard</a></li>
+                  <li><a href="#">Privacy Policy</a></li>
+                </ul>
+              </div>
+              <div class="footer-col">
+                <h4>Useful links</h4>
+                <ul>
+                  <li><a href="#">Resources</a></li>
+                  <li><a href="#">Report a problem</a></li>
+                  <li><a href="#">Responsable disclosure</a></li>
+                  <li><a href="#">Lorem ipsum</a></li>
+                </ul>
+              </div>
+              <div class="footer-col">
+                <h4>About us</h4>
+                <ul>
+                  <li><a href="#" id="offerteText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></li>
+                </ul>
+              </div>
+              <div class="footer-col">
+                <h4>Follow</h4>
+                <div class="social-links">
+                  <a href="https://discord.gg/ddFTAvBF8k"><i class="fa-brands fa-discord"></i></a>
+                  <a href="https://github.com/AidenistooOP/FishWiki"><i class="fa-brands fa-github"></i></a>
+                  <a href="https://instagram.com/predactsoftware?igshid=MzRlODBiNWFlZA=="><i
+                      class="fab fa-instagram"></i></a>
+                  <a href="https://www.linkedin.com/company/predact/"><i class="fab fa-linkedin"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    <script src="scripts/script.js"></script>
 </body>
 </html>

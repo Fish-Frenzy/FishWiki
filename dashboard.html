@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FishWiki - Dashboard</title>
+    <link rel="stylesheet" href="style/dashboard.css">
+    <link href="https://fonts.googleapis.com/css?family=Sniglet|Raleway:900" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <h1>FishWiki</h1>
+            <button onclick="logout()">Logout</button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="form-container">
+            <h2>Create new Wiki</h2>
+            <form id="createWikiForm">
+                <input type="hidden" id="wikiId" name="wikiId">
+                <label for="title">Title</label>
+                <input type="text" id="title" name="title" placeholder="Bob the fish" required> <br> <br>
+                <label for="description">Description</label>
+                <textarea id="description" name="description" placeholder="This fish is super cool..." required></textarea> <br> <br>
+                <label for="region">Region</label>
+                <select id="region" required>
+                    <option>North America</option>
+                    <option>Europe</option>
+                    <option>Asia</option>
+                    <option>Latin America</option>
+                </select> <br> <br>
+                <label for="rarity">Rarity</label>
+                <input type="number" id="rarity" name="rarity" placeholder="3" required> <br> <br>
+                <label for="image">Image Url</label>
+                <input type="text" name="image" id="image" placeholder="https://linktoimage.com/image.jpg" required> <br> <br>
+                <button type="submit">Create Wiki</button>
+            </form>
+            <div id="errorCreating"></div>
+        </section>
+
+        <section class="wikis-container">
+            <h2>My Wikis</h2>
+            <div id="wikisContainer"></div>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="scripts/dashboard.js"></script>
+</body>
+</html>
