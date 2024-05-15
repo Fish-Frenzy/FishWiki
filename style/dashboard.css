@@ -1,0 +1,106 @@
+body {
+    font-family: 'Sniglet', cursive;
+    background-color: #f0f8ff; 
+    color: #333;
+    padding: 0;
+    margin: 0;
+}
+
+h1 {
+    font-size: 32px;
+    font-family: 'Raleway', sans-serif;
+    color: #fff;
+}
+
+.navbar {
+    height: 45px;
+    background-color: #4682b4; 
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar button {
+    padding: 10px 20px;
+    background-color: #87ceeb;
+    border: none;
+    border-radius: 5px;
+    color: #fff; 
+    cursor: pointer;
+    font-size: 16px;
+    font-family: 'Raleway', sans-serif;
+    transition: background-color 0.3s ease;
+}
+
+.navbar button:hover {
+    background-color: #40607b; 
+}
+
+.form-container {
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f0f8ff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-container h2 {
+    color: #F90;
+    margin-bottom: 20px;
+}
+
+.form-container label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-container input[type="text"],
+.form-container input[type="number"],
+.form-container select,
+.form-container textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.form-container button[type="submit"] {
+    background-color: #F90;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.form-container button[type="submit"]:hover {
+    background-color: rgb(136, 102, 49);
+}
+
+.wikis-container {
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f0f8ff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.wikis-container h2 {
+    color: #F90;
+    margin-bottom: 20px;
+}
+
+.edit-btn, .delete-btn {
+    background-color: #F90;
+    color: #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
