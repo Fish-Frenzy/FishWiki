@@ -3,8 +3,6 @@ FishWiki Frontend is a simple web application built to display information about
 
 ![GitHub Repo stars](https://img.shields.io/github/stars/AidenistooOP/FishWiki?color=green) ![GitHub](https://img.shields.io/github/license/AidenistooOP/FishWiki)
 
-<img src="https://media.discordapp.net/attachments/1239294847874240622/1239294937430753320/LinkedIn_cover_-_2.png?ex=664266da&is=6641155a&hm=94745157c2d6885f218c0dc6bbdb57d0bfa4416536aed2433c489e162ec11752&=&format=webp&quality=lossless&width=1440&height=482" rel="banner" height="80px"/>
-
 # Features
 Displays fish species information fetched from a Laravel API endpoint.
 Supports authentication using a bearer token retrieved from localStorage.
