@@ -29,6 +29,5 @@ Join the [Discord server](https://discord.gg/ddFTAvBF8k) to contribute in this p
 The backend (Laravel app) will be published soon too.
 
 # Contact
-<img src="https://mailmeteor.com/logos/assets/PNG/Gmail_Logo_512px.png" width="20px"> Email    : aidenonyenwenu@gmail.com OR ps241150@summacollege.nl <br>
-<img src="https://cdn-icons-png.flaticon.com/512/733/733561.png" width="20px"> LinkedIn : [Aiden Onyenwenu](https://www.linkedin.com/in/aiden-onyenwenu/) <br>
-<img src="https://png.pngtree.com/png-vector/20221018/ourmid/pngtree-instagram-social-platform-icon-png-image_6315976.png" width="20px"> Instagram: [040aiden](https://instagram.com/040aiden/) <br> <br>
+<img src="https://mailmeteor.com/logos/assets/PNG/Gmail_Logo_512px.png" width="20px"> Email    : github@predact.nl <br>
+<img src="https://png.pngtree.com/png-vector/20221018/ourmid/pngtree-instagram-social-platform-icon-png-image_6315976.png" width="20px"> Instagram: [FishFrenzy](https://instagram.com/fishfrenzycommunity/) <br> <br>
